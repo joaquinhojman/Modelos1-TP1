@@ -32,6 +32,17 @@ def ordenar_tiempos_lavados(tiempos_lavado):
         del tiempos_lavado[longest_lavado[0]]
     return sorted
 
+def ordenar_cant_incompatibilidades(incompatibilidades):
+    cant_incompatibilidades = {}
+    for k,v in incompatibilidades.items():
+        cant_incompatibilidades[k] = len(v)
+    sorted = []
+    while (len(cant_incompatibilidades) != 0):
+        longest_lavado = max(cant_incompatibilidades.items(), key=itemgetter(1))
+        sorted.append(longest_lavado[0])
+        del cant_incompatibilidades[longest_lavado[0]]
+    return sorted
+
 def existe_incompatibilidad(prenda, prendas_del_lavado, incompatibilidades):
     for p in prendas_del_lavado:
         if p in incompatibilidades[prenda] or prenda in incompatibilidades[p]:
@@ -54,22 +65,23 @@ def escribir_archivo(lavado):
         for l in v:
             L.append(l + " " + str(k)+"\n")
     # Writing to a file
-    file = open('solucion.txt', 'w')
+    file = open('solucion2.txt', 'w')
     file.writelines((L))
     file.close()
 
 def organizar_lavados():
-    cant_prendas, tiempos_lavado, incompatibilidades = leer_archivo('primer_problema.txt')
+    _cant_prendas, tiempos_lavado, incompatibilidades = leer_archivo('primer_problema.txt')
     lavado = {}
-    tiempos_lavados_sorted = ordenar_tiempos_lavados(tiempos_lavado.copy())
+    #tiempos_lavados_sorted = ordenar_tiempos_lavados(tiempos_lavado.copy())
+    cant_incompatibilidades_sorted = ordenar_cant_incompatibilidades(incompatibilidades.copy())
     i = 1
-    while len(tiempos_lavados_sorted) != 0:
-        lavado[i] = [tiempos_lavados_sorted[0]]
-        tiempos_lavados_sorted.pop(0)
-        for prenda in tiempos_lavados_sorted:
+    while len(cant_incompatibilidades_sorted) != 0:
+        lavado[i] = [cant_incompatibilidades_sorted[0]]
+        cant_incompatibilidades_sorted.pop(0)
+        for prenda in cant_incompatibilidades_sorted:
             if not existe_incompatibilidad(prenda, lavado[i], incompatibilidades):
                 lavado[i].append(prenda)
-                tiempos_lavados_sorted.remove(prenda)
+                cant_incompatibilidades_sorted.remove(prenda)
         i += 1
     print(lavado)
     print(calcular_tiempo(lavado, tiempos_lavado))
