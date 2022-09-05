@@ -1,8 +1,19 @@
-Primera solucion para el trabajo. Me parecio interesante tratar de pensar una solucionoptima para el problema. El algoritmo implementado usa una solucion
+Primera solucion para el trabajo. Me parecio interesante tratar de pensar una solucion optima para el problema. El algoritmo implementado usa una solucion
 greedy para ordenar las prendas. Se pone en el lavado la prenda mas sucia aun no lavada, y despues se tratan de poner con esta las siguientes mas sucias,
 siempre que no sean incompatibles, esto para tratar de que las mas sucias se laven juntas y asi aprovechar el tiempo.
 
 Es muy probable que este algoritmo NO encuentre la mejor solucion optima, pero como primer intento me parecio adecuado en cuanto a complejidad y aproximacion. 
 Quizas una solucion con el metodo de Pogramacion Dinamica sea mas adecuado para lograr el optimo, pero seguramente sea mas costoso en terminos de tiempo.
 
+Con esta forma de resolucion obtuve un puntaje de 62.
+
 Este problema me recordo al problema del cambio minimo en monedas.
+
+----------------------------------------------
+
+La segunda forma que pense para resolver el problema, con la que obtuve un puntaje de 61, fue un nuevo
+algoritmo greedy que se comporta de la siguiente manera:
+
+En el primer lavado se pone la prenda con mas incompatibles, y se ponen con ella las prendas que no sean
+incompatibles. Luego va la siguiente con mas incompatibles, y de nuevo se trata de agregar prendas compatibles, y
+asi hasta lavar todas las prendas.
