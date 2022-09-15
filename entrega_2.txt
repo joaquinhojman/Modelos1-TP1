@@ -1,0 +1,10 @@
+Solucion del TP2.
+
+Nota: el codigo del TP2 esta en el archivo llamado TP1, no cambio el nombre ni creo un nuevo archivo para que
+en el commit puedan reflejarse los cambios respecto a la entrega anterior.
+
+Para esta solucion cambie bastante el enfoque: cree un grafo donde cada prenda es un nodo y una arista entre 
+dos nodos indica que hay una incompatibilidad entre las dos prendas. Luego, aplique usando networkx 
+un algoritmo greedy de coloreo de grafos usando la estrategia de "smallest_last".
+
+Cabe destacar que el uso de este algoritmo greedy puede dar diferentes soluciones cada vez que se ejecuta.
