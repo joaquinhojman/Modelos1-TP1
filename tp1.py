@@ -66,7 +66,7 @@ def escribir_archivo(lavado):
         for l in v:
             L.append(l + " " + str(k)+"\n")
     # Writing to a file
-    file = open('solucion3.txt', 'w')
+    file = open('solucion5.txt', 'w')
     file.writelines((L))
     file.close()
 
@@ -113,7 +113,7 @@ def listar_lavados(lavado, tiempos_lavado, incompatibilidades):
     return lavado_items
 
 def organizar_lavados_2():
-    _cant_prendas, tiempos_lavado, incompatibilidades = leer_archivo('segundo_problema.txt')
+    _cant_prendas, tiempos_lavado, incompatibilidades = leer_archivo('cuarto_problema.txt')
     lavados_dicc = graph_coloring(incompatibilidades)
     lavados = listar_lavados(lavados_dicc, tiempos_lavado, incompatibilidades)
     print(calcular_tiempo(lavados, tiempos_lavado))
